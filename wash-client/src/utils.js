@@ -4,7 +4,7 @@ import _ from 'lodash';
 export function getByDayOfWeek(items) {
   return getChartData(items, item => {
     const key = new Date(item.time).getDay();
-    const label = getWeekdayLabel(key);
+    const label = getWeekdayLabelLong(key);
     return { key, label };
   });
 }
@@ -13,7 +13,7 @@ export function getByDayOfWeek(items) {
 export function getByHoursOfDay(items) {
   return getChartData(items, item => {
     const key = new Date(item.time).getHours();
-    const label = key;
+    const label = `kl. ${key}`;
     return { key, label };
   });
 }
@@ -32,12 +32,12 @@ export function getByHourOfWeek(items) {
     const weekDay = new Date(item.time).getDay();
     const hour = new Date(item.time).getHours();
     const key = parseInt(`${weekDay}${_.padStart(hour, 2, '0')}`, 10);
-    const label = `${getWeekdayLabel(weekDay)}, kl. ${hour}`;
+    const label = `${getWeekdayLabelShort(weekDay)}, kl. ${hour}`;
     return { key, label };
   });
 }
 
-function getWeekdayLabel(i) {
+function getWeekdayLabelLong(i) {
   return [
     'søndag',
     'mandag',
@@ -47,6 +47,10 @@ function getWeekdayLabel(i) {
     'fredag',
     'lørdag'
   ][i];
+}
+
+function getWeekdayLabelShort(i) {
+  return ['søn', 'man', 'tirs', 'ons', 'tors', 'fre', 'lør'][i];
 }
 
 function getChartData(items, iteratee) {

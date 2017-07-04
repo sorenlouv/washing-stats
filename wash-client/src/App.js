@@ -19,7 +19,7 @@ import {
 
 import './App.css';
 
-function Chart({ data }) {
+function Chart({ data, labelX }) {
   return (
     <ResponsiveContainer width="100%" height={400}>
       <LineChart
@@ -28,7 +28,7 @@ function Chart({ data }) {
       >
         <XAxis
           label={{
-            value: 'Tid',
+            value: labelX,
             position: 'insideBottom',
             dy: 15,
             fill: '#888'
@@ -94,16 +94,16 @@ function App() {
   return (
     <div className="App">
       <h2>Daglig forbrug (pr time)</h2>
-      <Chart data={hoursOfDay} />
+      <Chart data={hoursOfDay} labelX="Klokkeslæt" />
 
       <h2>Ugentlig forbrug (pr dag)</h2>
-      <Chart data={dayOfWeek} />
+      <Chart data={dayOfWeek} labelX="Ugedag" />
 
       <h2>Ugentlig forbrug (pr time)</h2>
-      <Chart data={hourOfWeek} />
+      <Chart data={hourOfWeek} labelX="Ugedag og klokkeslæt" />
 
       <h2>Månedlig forbrug (pr dag)</h2>
-      <Chart data={dayOfMonth} />
+      <Chart data={dayOfMonth} labelX="Dag i måneden" />
     </div>
   );
 }
