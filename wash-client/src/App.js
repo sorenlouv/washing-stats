@@ -1,5 +1,6 @@
 import React from 'react';
 import {
+  ResponsiveContainer,
   LineChart,
   Legend,
   Line,
@@ -18,16 +19,12 @@ import {
 
 import './App.css';
 
-const data = getByHoursOfDay(sampleData);
-
-function App() {
+function Chart({ data }) {
   return (
-    <div className="App">
+    <ResponsiveContainer width="100%" height={400}>
       <LineChart
-        width={800}
-        height={400}
         data={data}
-        margin={{ top: 5, right: 30, left: 20, bottom: 20 }}
+        margin={{ top: 20, right: 20, left: 20, bottom: 20 }}
       >
         <XAxis
           label={{
@@ -51,6 +48,11 @@ function App() {
         <CartesianGrid strokeDasharray="3 3" />
         <Tooltip />
         <Legend
+          wrapperStyle={{
+            top: '-5px',
+            left: '50%',
+            transform: 'translateX(-50%)'
+          }}
           verticalAlign="top"
           onClick={() => {
             debugger;
@@ -58,18 +60,20 @@ function App() {
         />
 
         <Line
-          name="Vaskemaskiner"
+          name="Vaskemaskine"
           type="monotone"
           dataKey="washersAvg"
           stroke="#8884d8"
           activeDot={{ r: 8 }}
         />
+
         <Line
-          name="Tørretumblere"
+          name="Tørretumbler"
           type="monotone"
           dataKey="dryersAvg"
           stroke="#82ca9d"
         />
+
         <Line
           name="Bad"
           type="monotone"
@@ -77,6 +81,29 @@ function App() {
           stroke="#ff0000"
         />
       </LineChart>
+    </ResponsiveContainer>
+  );
+}
+
+function App() {
+  const hoursOfDay = getByHoursOfDay(sampleData);
+  const dayOfWeek = getByDayOfWeek(sampleData);
+  const hourOfWeek = getByHourOfWeek(sampleData);
+  const dayOfMonth = getByDayOfMonth(sampleData);
+
+  return (
+    <div className="App">
+      <h2>Daglig forbrug (pr time)</h2>
+      <Chart data={hoursOfDay} />
+
+      <h2>Ugentlig forbrug (pr dag)</h2>
+      <Chart data={dayOfWeek} />
+
+      <h2>Ugentlig forbrug (pr time)</h2>
+      <Chart data={hourOfWeek} />
+
+      <h2>Månedlig forbrug (pr dag)</h2>
+      <Chart data={dayOfMonth} />
     </div>
   );
 }

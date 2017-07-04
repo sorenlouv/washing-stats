@@ -4,7 +4,7 @@ import _ from 'lodash';
 export function getByDayOfWeek(items) {
   return getChartData(items, item => {
     const key = new Date(item.time).getDay();
-    const label = key;
+    const label = getWeekdayLabel(key);
     return { key, label };
   });
 }
