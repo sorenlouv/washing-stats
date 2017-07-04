@@ -1,0 +1,25 @@
+{
+  "name": "washing-stats",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/index.js",
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.1",
+    "got": "^7.1.0"
+  },
+  "devDependencies": {
+    "aws-sdk": "^2.80.0",
+    "eslint": "^4.1.1",
+    "eslint-config-prettier": "^2.3.0",
+    "eslint-plugin-prettier": "^2.1.2",
+    "eslint-plugin-react": "^7.1.0",
+    "prettier": "^1.5.2"
+  },
+  "scripts": {
+    "start": "node src/index.js",
+    "lint": "prettier ./src/** && eslint ./src",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Søren Louv-Jansen <sorenlouv@gmail.com>",
+  "license": "ISC"
+}
