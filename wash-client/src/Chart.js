@@ -27,9 +27,9 @@ function Chart({ data, labelX }) {
           dataKey="label"
         />
         <YAxis
-          domain={['dataMin - 1', 'dataMax + 1']}
+          domain={[0, 6]}
           label={{
-            value: 'Antal ledige',
+            value: 'Ledige maskiner',
             position: 'insideLeft',
             angle: -90,
             dy: 20,
