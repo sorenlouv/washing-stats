@@ -1,7 +1,4 @@
 {
-  "parserOptions": {
-    "ecmaVersion": 6
-  },
   "env": {
     "browser": false,
     "node": true
@@ -15,7 +12,26 @@
         "semi": true
       }
     ],
-    "no-console": "off"
+    "no-console": "off",
+    "no-use-before-define": "off",
+    "react/jsx-filename-extension": [
+      1,
+      {
+        "extensions": [".js", ".jsx"]
+      }
+    ],
+    "react/require-default-props": "off",
+    "react/no-unused-prop-types": "off",
+    "react/forbid-prop-types": "off",
+    "react/prop-types": "off",
+    "prefer-const": "error",
+    "import/no-named-as-default-member": "off",
+    "import/no-extraneous-dependencies": "off",
+    "import/no-duplicates": "off",
+    "import/extensions": "off",
+    "import/no-named-as-default": "off",
+    "import/no-absolute-path": "off",
+    "import/no-unresolved": "off"
   },
-  "extends": ["eslint:recommended", "prettier", "prettier/react"]
+  "extends": ["airbnb", "prettier", "prettier/react"]
 }

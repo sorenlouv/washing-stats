@@ -13,6 +13,9 @@ export function getByDayOfWeek(items) {
 export function getByHoursOfDay(items) {
   return getChartData(items, item => {
     const key = new Date(item.time).getHours();
+    if (key > 21) {
+      console.log(item);
+    }
     const label = `kl. ${key}`;
     return { key, label };
   });
