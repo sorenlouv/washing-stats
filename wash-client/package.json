@@ -1,5 +1,6 @@
 {
-  "name": "wash-client",
+  "name": "washing-stats",
+  "homepage": "https://sqren.github.io/washing-stats/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -11,6 +12,7 @@
     "recharts": "^1.0.0-alpha.1"
   },
   "scripts": {
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
@@ -24,6 +26,7 @@
     "eslint-plugin-jsx-a11y": "^5.1.1",
     "eslint-plugin-prettier": "^2.1.2",
     "eslint-plugin-react": "^7.1.0",
+    "gh-pages": "^1.0.0",
     "prettier": "^1.5.2"
   }
 }
