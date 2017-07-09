@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-import { getData } from './rest';
-import Chart from './Chart';
+import { getData } from '../services/rest';
+import Chart from '../Chart/Chart';
 import {
   getByHoursOfDay,
   getByDayOfWeek,
   getByHourOfWeek,
   getByDayOfMonth
-} from './utils';
+} from '../services/utils';
 
 import './App.css';
 
