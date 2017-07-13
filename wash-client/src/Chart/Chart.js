@@ -2,7 +2,6 @@ import React from 'react';
 import {
   ResponsiveContainer,
   LineChart,
-  Legend,
   Line,
   XAxis,
   YAxis,
@@ -10,7 +9,11 @@ import {
   Tooltip
 } from 'recharts';
 
-function Chart({ data, labelX }) {
+let prevLabelX;
+function Chart({ data, labelX, name, chartDomain }) {
+  const shouldAnimate = !prevLabelX || labelX === prevLabelX;
+  console.log(labelX, prevLabelX)
+  prevLabelX = labelX;
   return (
     <ResponsiveContainer width="100%" height={400}>
       <LineChart
@@ -27,7 +30,7 @@ function Chart({ data, labelX }) {
           dataKey="label"
         />
         <YAxis
-          domain={[0, 6]}
+          domain={chartDomain}
           label={{
             value: 'Ledige maskiner',
             position: 'insideLeft',
@@ -38,39 +41,15 @@ function Chart({ data, labelX }) {
         />
         <CartesianGrid strokeDasharray="3 3" />
         <Tooltip />
-        <Legend
-          wrapperStyle={{
-            top: '-5px',
-            left: '50%',
-            transform: 'translateX(-50%)'
-          }}
-          verticalAlign="top"
-          onClick={() => {
-            debugger;
-          }}
-        />
 
         <Line
-          name="Vaskemaskine"
+          isAnimationActive={shouldAnimate}
+          name={name}
           type="monotone"
-          dataKey="washersAvg"
+          dataKey="avg"
           stroke="#8884d8"
           activeDot={{ r: 8 }}
         />
-
-        {/*<Line
-          name="Tørretumbler"
-          type="monotone"
-          dataKey="dryersAvg"
-          stroke="#82ca9d"
-        />
-
-        <Line
-          name="Bad"
-          type="monotone"
-          dataKey="showersAvg"
-          stroke="#ff0000"
-        />*/}
       </LineChart>
     </ResponsiveContainer>
   );
